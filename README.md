@@ -2,9 +2,10 @@
 
 Small authenticated reverse relay between n8n and one Windows UFO device.
 
-- The Windows client opens an outbound WebSocket connection.
+- The Windows client uses outbound authenticated HTTPS long-polling.
 - n8n sends tasks to `POST /api/run` with `X-API-Key`.
 - No inbound port or tunnel is opened on the Windows computer.
+- The HTTPS transport works on networks where WebSocket traffic is blocked.
 - Secrets are supplied only as Render environment variables or local CLI arguments.
 
 ## Render
@@ -26,4 +27,3 @@ Required environment variables:
 - `RELAY_API_KEY` — at least 32 characters.
 - `AGENT_TOKEN` — at least 32 characters.
 - `TASK_TIMEOUT_SECONDS` — optional, default 300.
-
